@@ -6,7 +6,7 @@ pipeline {
                 sh "docker --version"
             }
         }
-        stage("gi Version") {
+        stage("git Version") {
             steps {
                 sh "git --version"
             }
