@@ -1,16 +1,15 @@
 
 FROM ubuntu:20.04
 
-LABEL maintainer="chaitanya <chaitanyapriya1211@gmail.com>"
-
-
-RUN apt-get update && apt-get install -y apache2
-
-
-RUN systemctl enable apache2
-
-
+ENV TZ=Asia/Mumbai \
+    DEBIAN_FRONTEND=noninteractive
+    
+RUN apt-get update && \
+    apt-get install -y apache2
+    
+# Expose port 80 for incoming traffic
 EXPOSE 80
 
+# Start Apache HTTP Server when the container starts
+CMD ["apachectl", "-D", "FOREGROUND"]
 
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
