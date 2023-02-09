@@ -1,9 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage("checkour")
-        steps {
-            
+        stage("checkout") {
+        steps { 
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/chaitanyapriya123/pipeline.git']])
+               
+        }
+    }
         stage("Docker Version") {
             steps {
                 sh "docker --version"
@@ -27,3 +30,4 @@ pipeline {
     }
    
 }
+
