@@ -1,6 +1,9 @@
 pipeline {
     agent any
     stages {
+        stage("checkour")
+        steps {
+            
         stage("Docker Version") {
             steps {
                 sh "docker --version"
